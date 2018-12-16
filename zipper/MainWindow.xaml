@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zipper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Zipper" Height="400" Width="600">
     <Grid>
-        
+        <TextBox x:Name="pathname" HorizontalAlignment="Left" Height="20" Margin="96,61,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" TextChanged="pathName"/>
+        <Button Content="参照" HorizontalAlignment="Left" Margin="446,61,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse"/>
+        <Button Content="圧縮" HorizontalAlignment="Left" Margin="199,203,0,0" VerticalAlignment="Top" Width="202" RenderTransformOrigin="-0.8,1.4" Height="66" Click="zip"/>
+        <CheckBox x:Name="timeCheck" Content="圧縮後ファイルに日付をつける" HorizontalAlignment="Left" Margin="221,183,0,0" VerticalAlignment="Top" Checked="timeCheck"/>
     </Grid>
 </Window>
