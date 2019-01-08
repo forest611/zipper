@@ -7,9 +7,14 @@
         mc:Ignorable="d"
         Title="Zipper" Height="400" Width="600">
     <Grid>
-        <TextBox x:Name="pathname" HorizontalAlignment="Left" Height="20" Margin="96,61,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" TextChanged="pathName"/>
-        <Button Content="参照" HorizontalAlignment="Left" Margin="446,61,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse"/>
-        <Button Content="圧縮" HorizontalAlignment="Left" Margin="199,203,0,0" VerticalAlignment="Top" Width="202" RenderTransformOrigin="-0.8,1.4" Height="66" Click="zip"/>
-        <CheckBox x:Name="timeCheck" Content="圧縮後ファイルに日付をつける" HorizontalAlignment="Left" Margin="221,183,0,0" VerticalAlignment="Top" Checked="timeCheck"/>
+        <TextBox x:Name="pathname1" HorizontalAlignment="Left" Height="20" Margin="96,61,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" />
+        <Button Content="フォルダ参照" HorizontalAlignment="Left" Margin="446,61,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse1"/>
+        <Button Content="圧縮" HorizontalAlignment="Left" Margin="164,176,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="-0.8,1.4" Height="66" Click="zip"/>
+        <CheckBox x:Name="timeCheck" Content="圧縮後ファイルに日付をつける" HorizontalAlignment="Left" Margin="220,161,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="pathname2" HorizontalAlignment="Left" Height="20" Margin="96,124,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" />
+        <Button Content="参照" HorizontalAlignment="Left" Margin="446,124,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse2"/>
+        <Label Content="圧縮するフォルダ" HorizontalAlignment="Left" Margin="96,35,0,0" VerticalAlignment="Top"/>
+        <Label Content="圧縮したフォルダの保存先" HorizontalAlignment="Left" Margin="96,98,0,0" VerticalAlignment="Top"/>
+        <Button Content="設定を保存" HorizontalAlignment="Left" Margin="325,176,0,0" VerticalAlignment="Top" Width="116" Height="66" Click="preset"/>
     </Grid>
 </Window>
