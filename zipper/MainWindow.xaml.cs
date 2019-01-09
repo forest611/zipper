@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace zipper
 {
@@ -14,13 +15,16 @@ namespace zipper
     public partial class MainWindow : Window
     {
 
-        public String place; //保存先
-        public String zipPath; //圧縮するフォルダのディレクトリ
-        public String fileName;
+        public string place; //保存先
+        public string zipPath; //圧縮するフォルダのディレクトリ
+        public string fileName;
+        public PresetSetting set;
 
         public MainWindow()
         {
             InitializeComponent();
+            set = new PresetSetting();
+            set.loadPreset(this);
         }
 
 
@@ -75,9 +79,33 @@ namespace zipper
 
 
 
-        private void preset(object sender, RoutedEventArgs e)
+        private void setPreset(object sender, RoutedEventArgs e)
         {
+            set.setPreset(pathname1.GetLineText(0), pathname2.GetLineText(0) + @"\" + fileName, (bool)timeCheck.IsChecked);
+            MessageBox.Show("設定を保存しました");
+        }
+
+        private void clickPreset(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            try
+            {
+                ZipFile.CreateFromDirectory(zipPath, place + ".zip", CompressionLevel.Optimal, false, Encoding.UTF8);
+            }
+            catch (System.ArgumentNullException)
+            {
+                MessageBox.Show("プリセットの圧縮するファイル、圧縮したファイルの保存先を \n 正しく設定できていません");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("圧縮先のファイルにアクセスできませんでした");
+            }
+            catch (System.IO.IOException)
+            {
+                MessageBox.Show("圧縮済みの同名ファイルが存在する \n もしくはプリセットに正しく記述できていない可能性があります");
+            }
+
 
         }
     }
-}
+} 
