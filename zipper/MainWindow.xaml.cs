@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
@@ -19,6 +20,7 @@ namespace zipper
         public string zipPath; //圧縮するフォルダのディレクトリ
         public string fileName;
         public PresetSetting set;
+        public Dictionary<string,string[]> presetData = new Dictionary<string,string[]>();
 
         public MainWindow()
         {
@@ -42,7 +44,7 @@ namespace zipper
                 ZipFile.CreateFromDirectory(zipPath,place+".zip", CompressionLevel.Optimal,false, Encoding.UTF8);
                 MessageBox.Show("ファイルの圧縮が完了しました");
             }
-            catch (System.ArgumentNullException)
+            catch (System.ArgumentException)
             {
                 MessageBox.Show("圧縮するファイル、圧縮したファイルの保存先を設定してください");
             }
@@ -81,16 +83,36 @@ namespace zipper
 
         private void setPreset(object sender, RoutedEventArgs e)
         {
-            set.setPreset(pathname1.GetLineText(0), pathname2.GetLineText(0) + @"\" + fileName, (bool)timeCheck.IsChecked);
+            if(pathname1.GetLineText(0) == string.Empty || pathname2.GetLineText(0) == string.Empty)
+            {
+                MessageBox.Show("圧縮するフォルダのパス、圧縮したファイルを保存するパスを設定してください");
+                return;
+            }
+                if (presetName.GetLineText(0) == string.Empty)
+            {
+                MessageBox.Show("プリセット名を設定してください");
+                return;
+            }
+            set.setPreset(pathname1.GetLineText(0), pathname2.GetLineText(0) + @"\" + fileName,presetName.GetLineText(0), (bool)timeCheck.IsChecked);
+            set.loadPreset(this);
             MessageBox.Show("設定を保存しました");
         }
 
         private void clickPreset(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
+            string[] data;
+            presetData.TryGetValue(button.Name, out data);
+
             try
             {
-                ZipFile.CreateFromDirectory(zipPath, place + ".zip", CompressionLevel.Optimal, false, Encoding.UTF8);
+                if (data[3].Equals("YES"))
+                {
+                    data[1] = data[1] + " " + DateTime.Now.ToString("MMddHHmm");
+                }
+                ZipFile.CreateFromDirectory(data[0], data[1]+ ".zip", CompressionLevel.Optimal, false, Encoding.UTF8);
+                MessageBox.Show("ファイルの圧縮が完了しました");
+
             }
             catch (System.ArgumentNullException)
             {

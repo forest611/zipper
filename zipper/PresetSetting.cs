@@ -14,7 +14,7 @@ namespace zipper
         //preset.txtの場所（appのあるディレクトリと同じ)
         public string presetPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\presets.txt";
 
-        public void setPreset(String zipPath,String place,bool time)
+        public void setPreset(string zipPath,string place,string presetName,bool time)
         {
             using (StreamWriter sw = new StreamWriter(presetPath,true))
             {
@@ -23,7 +23,7 @@ namespace zipper
                 {
                     isTime = "YES";
                 }
-                sw.WriteLine(zipPath + "/" + place + "/"+isTime);
+                sw.WriteLine(zipPath + "/" + place + "/"+presetName+"/"+isTime);
                 sw.Close();
             }
         }
@@ -32,16 +32,23 @@ namespace zipper
         {
             try
             {
+                main.presetData.Clear();
+
                 using (StreamReader sr = new StreamReader(presetPath))
                 {
                     string path;
                     for(int i = 0; (path = sr.ReadLine()) != null;i++)
                     {
                         if (path == null || path == string.Empty) break;
+
+                        //button content
                         var obj = main.FindName("preset" + i);
-                        Button b = (Button)obj;
+                        Button button = (Button)obj;
                         string[] data = path.Split('/');
-                        b.Content = data[0] + "\n" + data[1] + "\n" + data[2];
+                        button.Content = data[2]+"\n"+data[3];
+
+                        //add data
+                        main.presetData.Add("preset" + i, data);
                         Console.WriteLine("load preset" + i);
                     }
                 }
@@ -49,6 +56,7 @@ namespace zipper
             }
             catch (FileNotFoundException)
             {
+                Console.WriteLine("create preset.txt");
                 StreamWriter sw = new StreamWriter(presetPath, true);
                 sw.Close();
             }

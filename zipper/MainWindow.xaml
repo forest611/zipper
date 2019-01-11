@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zipper"
         mc:Ignorable="d"
-        Title="Zipper" Height="403" Width="600">
-    <Grid Height="374" VerticalAlignment="Top" Margin="0,0,2,-2">
+        Title="Zipper 1.0" Height="444" Width="600">
+    <Grid Margin="0,0,2,-1" Height="414" VerticalAlignment="Top">
         <TextBox x:Name="pathname1" HorizontalAlignment="Left" Height="20" Margin="96,61,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" />
         <Button Content="フォルダ参照" HorizontalAlignment="Left" Margin="446,61,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse1"/>
         <Button Content="圧縮" HorizontalAlignment="Left" Margin="164,176,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="-0.8,1.4" Height="66" Click="zip"/>
@@ -16,9 +16,11 @@
         <Label Content="圧縮するフォルダ" HorizontalAlignment="Left" Margin="96,35,0,0" VerticalAlignment="Top"/>
         <Label Content="圧縮したフォルダの保存先" HorizontalAlignment="Left" Margin="96,98,0,0" VerticalAlignment="Top"/>
         <Button Content="設定を保存" HorizontalAlignment="Left" Margin="325,176,0,0" VerticalAlignment="Top" Width="116" Height="66" Click="setPreset"/>
-        <Button x:Name="preset0" Content="未設定" HorizontalAlignment="Left" Margin="69,274,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset" />
-        <Button x:Name="preset1" Content="未設定" HorizontalAlignment="Left" Margin="430,274,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
-        <Button x:Name="preset2" Content="未設定" HorizontalAlignment="Left" Margin="304,274,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
-        <Button x:Name="preset3" Content="未設定" HorizontalAlignment="Left" Margin="189,274,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
+        <Button x:Name="preset0" Content="未設定" HorizontalAlignment="Left" Margin="69,323,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset" />
+        <Button x:Name="preset1" Content="未設定" HorizontalAlignment="Left" Margin="189,323,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
+        <Button x:Name="preset2" Content="未設定" HorizontalAlignment="Left" Margin="304,323,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
+        <Button x:Name="preset3" Content="未設定" HorizontalAlignment="Left" Margin="421,323,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
+        <TextBox x:Name="presetName" HorizontalAlignment="Left" Height="20" Margin="96,298,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" />
+        <Label Content="プリセットの名前（名前を長くすると正しく表示されないことがあります)" HorizontalAlignment="Left" Margin="96,267,0,0" VerticalAlignment="Top" Width="345"/>
     </Grid>
 </Window>
