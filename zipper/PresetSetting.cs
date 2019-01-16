@@ -34,22 +34,27 @@ namespace zipper
             {
                 main.presetData.Clear();
 
+
                 using (StreamReader sr = new StreamReader(presetPath))
                 {
                     string path;
-                    for(int i = 0; (path = sr.ReadLine()) != null;i++)
+                    for(int i = 0; i !=4;i++)
                     {
-                        if (path == null || path == string.Empty) break;
-
-                        //button content
+                        //if (path == null || path == string.Empty) break;
                         var obj = main.FindName("preset" + i);
                         Button button = (Button)obj;
-                        string[] data = path.Split('/');
-                        button.Content = data[2]+"\n"+data[3];
 
-                        //add data
-                        main.presetData.Add("preset" + i, data);
-                        Console.WriteLine("load preset" + i);
+                        if ((path = sr.ReadLine()) != null)//if can read line.
+                        {
+                            string[] data = path.Split('/');
+                            button.Content = data[2] + "\n" + data[3];
+
+                            //add data
+                            main.presetData.Add("preset" + i, data);
+                            Console.WriteLine("load preset" + i);
+                            continue;
+                        }
+                        button.Content = "未設定"; //no setting
                     }
                 }
 

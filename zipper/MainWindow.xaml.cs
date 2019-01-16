@@ -16,6 +16,7 @@ namespace zipper
     public partial class MainWindow : Window
     {
 
+
         public string place; //保存先
         public string zipPath; //圧縮するフォルダのディレクトリ
         public string fileName;
@@ -66,24 +67,37 @@ namespace zipper
             zipPath = "";
             var openDlg = new CommonOpenFileDialog();
             openDlg.IsFolderPicker = true;
-            openDlg.ShowDialog();
-            pathname1.Text = openDlg.FileName;
-            fileName = System.IO.Path.GetFileName(openDlg.FileName);
+            openDlg.ShowDialog(); //add1.1
+            try
+            {
+                pathname1.Text = openDlg.FileName;
+                fileName = System.IO.Path.GetFileName(openDlg.FileName);
+            }
+            catch (Exception)
+            {
+            }
+
         }
         //zipを保存する場所を設定
         private void browse2(object sender, RoutedEventArgs e)
         {
             CommonOpenFileDialog saveArea = new CommonOpenFileDialog();
             saveArea.IsFolderPicker = true;
-            saveArea.ShowDialog();
-            pathname2.Text = saveArea.FileName;
+            saveArea.ShowDialog(); //add 1.1
+            try
+            {
+                pathname2.Text = saveArea.FileName;
+            }
+            catch (Exception)
+            {
+            }
         }
 
 
-
+        //プリセットを設定
         private void setPreset(object sender, RoutedEventArgs e)
         {
-            if(pathname1.GetLineText(0) == string.Empty || pathname2.GetLineText(0) == string.Empty)
+            if (pathname1.GetLineText(0)== string.Empty || pathname2.GetLineText(0) == string.Empty)
             {
                 MessageBox.Show("圧縮するフォルダのパス、圧縮したファイルを保存するパスを設定してください");
                 return;
@@ -98,6 +112,7 @@ namespace zipper
             MessageBox.Show("設定を保存しました");
         }
 
+        //プリセットをクリック
         private void clickPreset(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
@@ -126,8 +141,48 @@ namespace zipper
             {
                 MessageBox.Show("圧縮済みの同名ファイルが存在する \n もしくはプリセットに正しく記述できていない可能性があります");
             }
+            catch (NullReferenceException)//add 1.1
+            {
+                MessageBox.Show("未設定のプリセットです");
+            }
 
 
+        }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+
+            List<string> lines = new List<string>();
+            lines.AddRange(File.ReadAllLines(set.presetPath));
+            try
+            {
+                switch (button.Name)
+                {
+                    case "delete0":
+                        lines.RemoveAt(0);
+                        break;
+                    case "delete1":
+                        lines.RemoveAt(1);
+                        break;
+                    case "delete2":
+                        lines.RemoveAt(2);
+                        break;
+                    case "delete3":
+                        lines.RemoveAt(3);
+                        break;
+
+                }
+
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("未設定のプリセットです");
+                return;
+            }
+            File.WriteAllLines(set.presetPath, lines);
+            set.loadPreset(this);
+            MessageBox.Show("プリセットを削除しました");
         }
     }
 } 

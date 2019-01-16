@@ -5,22 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zipper"
         mc:Ignorable="d"
-        Title="Zipper 1.0" Height="444" Width="600">
-    <Grid Margin="0,0,2,-1" Height="414" VerticalAlignment="Top">
-        <TextBox x:Name="pathname1" HorizontalAlignment="Left" Height="20" Margin="96,61,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" />
-        <Button Content="フォルダ参照" HorizontalAlignment="Left" Margin="446,61,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse1"/>
-        <Button Content="圧縮" HorizontalAlignment="Left" Margin="164,176,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="-0.8,1.4" Height="66" Click="zip"/>
-        <CheckBox x:Name="timeCheck" Content="圧縮後ファイルに日付をつける" HorizontalAlignment="Left" Margin="220,156,0,0" VerticalAlignment="Top" />
-        <TextBox x:Name="pathname2" HorizontalAlignment="Left" Height="20" Margin="96,124,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" />
-        <Button Content="参照" HorizontalAlignment="Left" Margin="446,124,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse2"/>
-        <Label Content="圧縮するフォルダ" HorizontalAlignment="Left" Margin="96,35,0,0" VerticalAlignment="Top"/>
-        <Label Content="圧縮したフォルダの保存先" HorizontalAlignment="Left" Margin="96,98,0,0" VerticalAlignment="Top"/>
-        <Button Content="設定を保存" HorizontalAlignment="Left" Margin="325,176,0,0" VerticalAlignment="Top" Width="116" Height="66" Click="setPreset"/>
-        <Button x:Name="preset0" Content="未設定" HorizontalAlignment="Left" Margin="69,323,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset" />
-        <Button x:Name="preset1" Content="未設定" HorizontalAlignment="Left" Margin="189,323,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
-        <Button x:Name="preset2" Content="未設定" HorizontalAlignment="Left" Margin="304,323,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
-        <Button x:Name="preset3" Content="未設定" HorizontalAlignment="Left" Margin="421,323,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
-        <TextBox x:Name="presetName" HorizontalAlignment="Left" Height="20" Margin="96,298,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" />
-        <Label Content="プリセットの名前（名前を長くすると正しく表示されないことがあります)" HorizontalAlignment="Left" Margin="96,267,0,0" VerticalAlignment="Top" Width="345"/>
+        Title="Zipper 1.1" Height="472" Width="670">
+    <Grid Margin="0,0,2,0" Height="441" VerticalAlignment="Top">
+        <TextBox x:Name="pathname1" HorizontalAlignment="Left" Height="20" Margin="77,51,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="419" />
+        <Button Content="フォルダ参照" HorizontalAlignment="Left" Margin="501,51,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse1"/>
+        <Button Content="圧縮" HorizontalAlignment="Left" Margin="198,166,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="-0.8,1.4" Height="66" Click="zip"/>
+        <CheckBox x:Name="timeCheck" Content="圧縮後ファイルに日付をつける" HorizontalAlignment="Left" Margin="254,146,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="pathname2" HorizontalAlignment="Left" Height="20" Margin="77,114,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="419" />
+        <Button Content="参照" HorizontalAlignment="Left" Margin="501,114,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.124,0.533" Click="browse2"/>
+        <Label Content="圧縮するフォルダ" HorizontalAlignment="Left" Margin="77,25,0,0" VerticalAlignment="Top"/>
+        <Label Content="圧縮したフォルダの保存先" HorizontalAlignment="Left" Margin="77,88,0,0" VerticalAlignment="Top"/>
+        <Button Content="設定を保存" HorizontalAlignment="Left" Margin="359,166,0,0" VerticalAlignment="Top" Width="116" Height="66" Click="setPreset"/>
+        <Button x:Name="preset0" Content="未設定" HorizontalAlignment="Left" Margin="124,326,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset" />
+        <Button x:Name="preset1" Content="未設定" HorizontalAlignment="Left" Margin="244,326,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
+        <Button x:Name="preset2" Content="未設定" HorizontalAlignment="Left" Margin="359,326,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
+        <Button x:Name="preset3" Content="未設定" HorizontalAlignment="Left" Margin="476,326,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="-0.8,1.4" Height="52" Click="clickPreset"/>
+        <TextBox x:Name="presetName" HorizontalAlignment="Left" Height="20" Margin="151,301,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" />
+        <Label Content="プリセットの名前（名前を長くすると正しく表示されないことがあります)" HorizontalAlignment="Left" Margin="151,270,0,0" VerticalAlignment="Top" Width="345"/>
+        <Button x:Name="delete0" Content="プリセット削除" HorizontalAlignment="Left" Margin="124,383,0,0" VerticalAlignment="Top" Width="91" Click="Delete"/>
+        <Button x:Name="delete1" Content="プリセット削除" HorizontalAlignment="Left" Margin="476,383,0,0" VerticalAlignment="Top" Width="91" Click="Delete"/>
+        <Button x:Name="delete2" Content="プリセット削除" HorizontalAlignment="Left" Margin="359,383,0,0" VerticalAlignment="Top" Width="91" Click="Delete"/>
+        <Button x:Name="delete3" Content="プリセット削除" HorizontalAlignment="Left" Margin="244,383,0,0" VerticalAlignment="Top" Width="91" Click="Delete"/>
     </Grid>
 </Window>
